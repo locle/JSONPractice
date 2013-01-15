@@ -1,0 +1,20 @@
+[
+ {"name":"Lộc",
+ "address":"123abc q1",
+ "DoB":"01101985"},
+ {"name":"Đăng",
+ "address":"308 Cô Bắc q1",
+ "DoB":"26091986"},
+ {"name":"Duy",
+ "address":"234 def q2",
+ "DoB":"01101987"},
+ {"name":"Quốc",
+ "address":"678 ght q3",
+ "DoB":"02121987"},
+ {"name":"Khang",
+ "address":"126 acb q1",
+ "DoB":"01101985"},
+ {"name":"KHTN",
+ "address":"",
+ "DoB":"32131990"}
+ ]
