@@ -10,7 +10,7 @@
 #import "JPPerson.h"
 @interface JPDetailViewController : UIViewController
 
-@property (nonatomic,strong) JPPerson *detailData;
+@property (nonatomic,strong) JPPerson *person;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameDisplay;
 @property (weak, nonatomic) IBOutlet UILabel *addressDisplay;

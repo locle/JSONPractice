@@ -14,26 +14,26 @@
 
 @implementation JPDetailViewController
 
-- (JPPerson *)detailData
+- (JPPerson *)person
 {
-    if (!_detailData)
+    if (!_person)
     {
-        _detailData = [[JPPerson alloc] init];
+        _person = [[JPPerson alloc] init];
     }
-    return _detailData;
+    return _person;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.nameDisplay.text = self.detailData.name;
-    self.addressDisplay.text = self.detailData.address;
+    self.nameDisplay.text = self.person.name;
+    self.addressDisplay.text = self.person.address;
     
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"dd mm yyyy";
-    self.doBDisplay.text = [dateFormatter stringFromDate:self.detailData.dateOfBirth];
+    self.doBDisplay.text = [dateFormatter stringFromDate:self.person.dateOfBirth];
     
 }
 
