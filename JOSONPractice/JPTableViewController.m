@@ -10,7 +10,7 @@
 #import "JSONKit.h"
 #import "JPDetailViewController.h"
 #import "JPPerson.h"
-
+#import "JPDataApiClient.h"
 
 @interface JPTableViewController ()
 
@@ -61,18 +61,47 @@
     
         
 //    NSLog(@"%@", [data description]);
-    self.person = [[JPPerson alloc] init];
-    [self.person addObserver:self forKeyPath:@"dataFinishLoaded" options:NSKeyValueObservingOptionNew context:nil];
+//    self.person = [[JPPerson alloc] init];
+//    [self.person addObserver:self forKeyPath:@"dataFinishLoaded" options:NSKeyValueObservingOptionNew context:nil];
     
-    [self.person loadData];
+//    [self.person loadData];
+    [[JPDataApiClient sharedInstance] getPath:@"/u/77809743/data.json"
+                                   parameters:nil
+                                      success:^(AFHTTPRequestOperation *operation, id response) {
+                                          id obj = [response objectFromJSONData];
+                                          if ( [obj isKindOfClass:[NSArray class]]){
+                                              self.dataSource = [JPPerson peopleListFromDataArray:obj];
+                                              [self.tableView reloadData];
+                                          }
+                                          NSLog(@"%@",[response class]);
+                                      }
+                                      failure:^(AFHTTPRequestOperation  *operation, NSError *error) {
+                                          NSLog(@"%@",error.description );
+                                      }];
+    
+//    id obj = [[self.loadedData copy] objectFromJSONData];
+//    
+//    if ([obj isKindOfClass:[NSArray class]]) {
+//        for (NSDictionary *dict in obj) {
+//            [self.mutablePeopleList addObject:[JPPerson personWithDictionary:dict]];
+//        }
+//        NSLog(@"NSArray");
+//    } else if ([obj isKindOfClass:[NSDictionary class]]) {
+//        NSLog(@"NSDictionary");
+//    }
+//    NSLog(@"%@", [obj class]);
+//    
+//    
+//    self.dataFinishLoaded = YES;
+
     
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    self.dataSource = self.person.peopleList;
-    [self.tableView reloadData];
-}
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+//{
+//    self.dataSource = self.person.peopleList;
+//    [self.tableView reloadData];
+//}
 
 - (void)didReceiveMemoryWarning
 {

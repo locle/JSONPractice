@@ -13,12 +13,12 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSDate *dateOfBirth;
-@property (nonatomic) BOOL dataFinishLoaded;
+//@property (nonatomic) BOOL dataFinishLoaded;
 
 
-- (void)loadData;
-- (NSArray *)peopleList;
-
+//- (void)loadData;
+//- (NSArray *)peopleList;
++ (NSArray *)peopleListFromDataArray:(NSArray *)dataArray;
 + (JPPerson *)personWithDictionary:(NSDictionary *)dictionary;
 
 @end
