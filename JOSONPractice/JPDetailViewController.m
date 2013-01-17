@@ -27,13 +27,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.nameDisplay.text = self.person.name;
-    self.addressDisplay.text = self.person.address;
-    
-    
+    self.nameDisplay.text = self.companyPerson.name;
+    self.usernameDisplay.text = self.companyPerson.username;
+    self.roleDisplay.text = self.companyPerson.role;
+    self.likeDisplay.text = self.companyPerson.like;
+    self.dislikeDisplay.text = self.companyPerson.dislike;
+
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"dd mm yyyy";
-    self.doBDisplay.text = [dateFormatter stringFromDate:self.person.dateOfBirth];
+    dateFormatter.dateFormat = @"dd/MM/yy HH:mm";
+    self.timestampDisplay.text = [dateFormatter stringFromDate:self.companyPerson.timestamp];
     
 }
 

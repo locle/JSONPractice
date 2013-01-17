@@ -11,6 +11,7 @@
 #import "JPDetailViewController.h"
 #import "JPPerson.h"
 #import "JPDataApiClient.h"
+#import "JP2359MediaPerson.h"
 
 @interface JPTableViewController ()
 
@@ -50,8 +51,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.tableView.delegate = self;
-    
+
+
 //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
 //    NSData *dataFile = [NSData dataWithContentsOfFile:filePath];
     
@@ -65,35 +66,35 @@
 //    [self.person addObserver:self forKeyPath:@"dataFinishLoaded" options:NSKeyValueObservingOptionNew context:nil];
     
 //    [self.person loadData];
-    [[JPDataApiClient sharedInstance] getPath:@"/u/77809743/data.json"
+    
+    // Using AFNetworking
+//    [[JPDataApiClient sharedInstance] getPath:@"/u/77809743/data.json"
+//                                   parameters:nil
+//                                      success:^(AFHTTPRequestOperation *operation, id response) {
+//                                          id obj = [response objectFromJSONData];
+//                                          if ( [obj isKindOfClass:[NSArray class]]){
+//                                              self.dataSource = [JPPerson peopleListFromDataArray:obj];
+//                                              [self.tableView reloadData];
+//                                          }
+//                                          NSLog(@"%@",[response class]);
+//                                      }
+//                                      failure:^(AFHTTPRequestOperation  *operation, NSError *error) {
+//                                          NSLog(@"%@",error.description );
+//                                      }];
+    
+    
+    [[JPDataApiClient sharedInstance] getPath:@"1/databases/2359media/collections/user?apiKey=50bc7070e4b07d292a90b92b"
                                    parameters:nil
                                       success:^(AFHTTPRequestOperation *operation, id response) {
+                                          
                                           id obj = [response objectFromJSONData];
-                                          if ( [obj isKindOfClass:[NSArray class]]){
-                                              self.dataSource = [JPPerson peopleListFromDataArray:obj];
-                                              [self.tableView reloadData];
-                                          }
-                                          NSLog(@"%@",[response class]);
+                                          self.dataSource = [JP2359MediaPerson peopleListFromDataArray:obj];
+                                          [self.tableView reloadData];
+                                          NSLog(@"%@",[obj class]);
                                       }
                                       failure:^(AFHTTPRequestOperation  *operation, NSError *error) {
                                           NSLog(@"%@",error.description );
                                       }];
-    
-//    id obj = [[self.loadedData copy] objectFromJSONData];
-//    
-//    if ([obj isKindOfClass:[NSArray class]]) {
-//        for (NSDictionary *dict in obj) {
-//            [self.mutablePeopleList addObject:[JPPerson personWithDictionary:dict]];
-//        }
-//        NSLog(@"NSArray");
-//    } else if ([obj isKindOfClass:[NSDictionary class]]) {
-//        NSLog(@"NSDictionary");
-//    }
-//    NSLog(@"%@", [obj class]);
-//    
-//    
-//    self.dataFinishLoaded = YES;
-
     
 }
 
@@ -115,36 +116,88 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.dataSource.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filteredPeopleArray count];
+    } else {
+        return [self.dataSource count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"RightDetail";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RightDetail"];
     }
     // Configure the cell...
-    id obj = [self.dataSource objectAtIndex:indexPath.row];
-    if ([obj isKindOfClass:[NSDictionary class]])
-    {
-        NSDictionary *temp = obj;
-        cell.textLabel.text = [temp objectForKey:@"name"];
+    
+    // Check to see whether the normal table or search results table is being displayed and set the Candy object from the appropriate array
+    id obj;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        obj = [self.filteredPeopleArray objectAtIndex:indexPath.row];
     } else {
-        JPPerson *person = obj;
+        obj = [self.dataSource objectAtIndex:indexPath.row];
+    }
+    
+    
+    if ([obj isKindOfClass:[JP2359MediaPerson class]])
+    {
+        JP2359MediaPerson *person = obj;
         cell.textLabel.text = person.name;
     }
+    
     return cell;
 }
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     JPDetailViewController *destinationVC = segue.destinationViewController;
-    destinationVC.person = [self.dataSource objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    destinationVC.companyPerson = [self.dataSource objectAtIndex:self.tableView.indexPathForSelectedRow.row];
 }
 
-#pragma mark - Table view delegate
+#pragma mark - SearchBar
+- (NSMutableArray *)filteredPeopleArray {
+    if (!_filteredPeopleArray) {
+        _filteredPeopleArray = [[NSMutableArray alloc] init];
+    }
+    return _filteredPeopleArray;
+}
 
+
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+//    if(searchText.length > 0)
+//    {
+//        [self.filteredPeopleArray removeAllObjects];
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
+//        self.filteredPeopleArray = [self.dataSource mutableCopy];
+//        [self.filteredPeopleArray filterUsingPredicate:predicate];
+//    }
+//    [self.tableView reloadData];
+//}
+
+
+- (void)filterContentForSearchText:(NSString *)searchText scope:(NSString *)scope {
+    [self.filteredPeopleArray removeAllObjects];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
+    self.filteredPeopleArray = [self.dataSource mutableCopy];
+    [self.filteredPeopleArray filterUsingPredicate:predicate];
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
 
 @end

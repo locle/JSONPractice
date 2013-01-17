@@ -18,6 +18,10 @@
 		8D9CB0B616A7ABDC00DAC1B1 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9CB0AC16A7ABDC00DAC1B1 /* AFXMLRequestOperation.m */; };
 		8D9CB0B716A7ABDC00DAC1B1 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9CB0AE16A7ABDC00DAC1B1 /* UIImageView+AFNetworking.m */; };
 		8D9CB0BE16A7AD0A00DAC1B1 /* JPDataApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9CB0BD16A7AD0A00DAC1B1 /* JPDataApiClient.m */; };
+		8D9CB0C116A7CF5B00DAC1B1 /* JP2359MediaPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9CB0C016A7CF5B00DAC1B1 /* JP2359MediaPerson.m */; };
+		8D9CB0C416A7DDAE00DAC1B1 /* JPInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9CB0C316A7DDAE00DAC1B1 /* JPInfoViewController.m */; };
+		8D9CB0CB16A7E84500DAC1B1 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D9CB0C916A7E84500DAC1B1 /* info.png */; };
+		8D9CB0CC16A7E84500DAC1B1 /* people.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D9CB0CA16A7E84500DAC1B1 /* people.png */; };
 		8D9D47A216A4FFB300F11DB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9D47A116A4FFB300F11DB4 /* UIKit.framework */; };
 		8D9D47A416A4FFB300F11DB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9D47A316A4FFB300F11DB4 /* Foundation.framework */; };
 		8D9D47A616A4FFB300F11DB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9D47A516A4FFB300F11DB4 /* CoreGraphics.framework */; };
@@ -59,6 +63,12 @@
 		8D9CB0AE16A7ABDC00DAC1B1 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		8D9CB0BC16A7AD0A00DAC1B1 /* JPDataApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPDataApiClient.h; sourceTree = "<group>"; };
 		8D9CB0BD16A7AD0A00DAC1B1 /* JPDataApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPDataApiClient.m; sourceTree = "<group>"; };
+		8D9CB0BF16A7CF5B00DAC1B1 /* JP2359MediaPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JP2359MediaPerson.h; sourceTree = "<group>"; };
+		8D9CB0C016A7CF5B00DAC1B1 /* JP2359MediaPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JP2359MediaPerson.m; sourceTree = "<group>"; };
+		8D9CB0C216A7DDAE00DAC1B1 /* JPInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPInfoViewController.h; sourceTree = "<group>"; };
+		8D9CB0C316A7DDAE00DAC1B1 /* JPInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPInfoViewController.m; sourceTree = "<group>"; };
+		8D9CB0C916A7E84500DAC1B1 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		8D9CB0CA16A7E84500DAC1B1 /* people.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people.png; sourceTree = "<group>"; };
 		8D9D479D16A4FFB300F11DB4 /* JOSONPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOSONPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9D47A116A4FFB300F11DB4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8D9D47A316A4FFB300F11DB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -141,6 +151,8 @@
 				8D3B050616A547780084C29E /* JPPerson.m */,
 				8D9CB0BC16A7AD0A00DAC1B1 /* JPDataApiClient.h */,
 				8D9CB0BD16A7AD0A00DAC1B1 /* JPDataApiClient.m */,
+				8D9CB0BF16A7CF5B00DAC1B1 /* JP2359MediaPerson.h */,
+				8D9CB0C016A7CF5B00DAC1B1 /* JP2359MediaPerson.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -161,6 +173,8 @@
 				8D9D47B116A4FFB300F11DB4 /* JPAppDelegate.m */,
 				8D9D47C716A5025700F11DB4 /* JPTableViewController.h */,
 				8D9D47C816A5025700F11DB4 /* JPTableViewController.m */,
+				8D9CB0C216A7DDAE00DAC1B1 /* JPInfoViewController.h */,
+				8D9CB0C316A7DDAE00DAC1B1 /* JPInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -210,6 +224,8 @@
 		8D9D47A816A4FFB300F11DB4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8D9CB0C916A7E84500DAC1B1 /* info.png */,
+				8D9CB0CA16A7E84500DAC1B1 /* people.png */,
 				8D9D47A916A4FFB300F11DB4 /* JOSONPractice-Info.plist */,
 				8D9D47AA16A4FFB300F11DB4 /* InfoPlist.strings */,
 				8D9D47AD16A4FFB300F11DB4 /* main.m */,
@@ -280,6 +296,8 @@
 				8D9D47BB16A4FFB300F11DB4 /* MainStoryboard_iPhone.storyboard in Resources */,
 				8D9D47BE16A4FFB300F11DB4 /* MainStoryboard_iPad.storyboard in Resources */,
 				8D9D47CD16A5067D00F11DB4 /* data.json in Resources */,
+				8D9CB0CB16A7E84500DAC1B1 /* info.png in Resources */,
+				8D9CB0CC16A7E84500DAC1B1 /* people.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +324,8 @@
 				8D9CB0B616A7ABDC00DAC1B1 /* AFXMLRequestOperation.m in Sources */,
 				8D9CB0B716A7ABDC00DAC1B1 /* UIImageView+AFNetworking.m in Sources */,
 				8D9CB0BE16A7AD0A00DAC1B1 /* JPDataApiClient.m in Sources */,
+				8D9CB0C116A7CF5B00DAC1B1 /* JP2359MediaPerson.m in Sources */,
+				8D9CB0C416A7DDAE00DAC1B1 /* JPInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
