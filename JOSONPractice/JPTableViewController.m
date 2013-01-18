@@ -153,7 +153,17 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     JPDetailViewController *destinationVC = segue.destinationViewController;
-    destinationVC.companyPerson = [self.dataSource objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    
+    UITableViewCell *cell = sender;
+    
+    JP2359MediaPerson *person;
+    if (cell.superview == self.searchDisplayController.searchResultsTableView) {
+        person = [self.filteredPeopleArray objectAtIndex:self.searchDisplayController.searchResultsTableView.indexPathForSelectedRow.row];
+    } else {
+        person = [self.dataSource objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    }
+    
+    destinationVC.companyPerson = person;
 }
 
 #pragma mark - SearchBar
