@@ -21,19 +21,30 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="RightDetail" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RightDetail" textLabel="BnS-A8-cEn" style="IBUITableViewCellStyleDefault" id="anX-kX-jUz">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="RightDetail" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RightDetail" textLabel="BnS-A8-cEn" detailTextLabel="PPS-hY-SR2" imageView="kDn-ed-xsz" style="IBUITableViewCellStyleSubtitle" id="anX-kX-jUz">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BnS-A8-cEn">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <rect key="frame" x="53" y="2" width="38" height="22"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PPS-hY-SR2">
+                                            <rect key="frame" x="53" y="24" width="47" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="people.png" id="kDn-ed-xsz">
+                                            <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -46,7 +57,7 @@
                             <outlet property="delegate" destination="mIX-TW-xWg" id="oxz-MG-szS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ebO-ch-dOS"/>
+                    <navigationItem key="navigationItem" title="People" id="ebO-ch-dOS"/>
                     <connections>
                         <outlet property="searchBar" destination="ZyU-rP-NDr" id="neE-7g-8U7"/>
                         <outlet property="searchDisplayController" destination="Wjh-Uz-fgG" id="dZa-4v-Uzm"/>
@@ -65,7 +76,7 @@
             </objects>
             <point key="canvasLocation" x="1064" y="142"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Detail View Controller - Detail-->
         <scene sceneID="eiZ-Ua-RoW">
             <objects>
                 <tableViewController id="acu-Wp-hdw" customClass="JPDetailViewController" sceneMemberID="viewController">
@@ -103,13 +114,38 @@
                                     <outlet property="title" destination="VxN-R0-zaF" id="Qyb-xT-Tkd"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="JPPersonLeftDetailCell" textLabel="fIq-rm-BjK" detailTextLabel="qaB-fe-sw2" style="IBUITableViewCellStyleValue2" id="TvZ-fi-H1F">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fIq-rm-BjK">
+                                            <rect key="frame" x="10" y="15" width="91" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                            <color key="textColor" red="0.32156862745098042" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qaB-fe-sw2">
+                                            <rect key="frame" x="107" y="12" width="41" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="acu-Wp-hdw" id="10G-RC-Pgs"/>
                             <outlet property="delegate" destination="acu-Wp-hdw" id="TSc-kO-0yN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ZjQ-0G-meI"/>
+                    <navigationItem key="navigationItem" title="Detail" id="6eN-dE-lx9"/>
                     <connections>
                         <outlet property="view" destination="2Ud-JD-dI7" id="K24-VY-bAT"/>
                     </connections>
@@ -190,6 +226,30 @@
         <image name="info.png" width="256" height="256"/>
         <image name="people.png" width="512" height="512"/>
     </resources>
+    <classes>
+        <class className="JPDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JPDetailViewController.h"/>
+        </class>
+        <class className="JPInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JPInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="infoWebView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="JPPersonDetailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JPPersonDetailCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="content" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="JPTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JPTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -145,14 +145,20 @@
     {
         JP2359MediaPerson *person = obj;
         cell.textLabel.text = person.name;
+        cell.detailTextLabel.text = person.username;
+
     }
     
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row % 2) {
+        cell.backgroundColor = [UIColor colorWithRed:0.53f green:0.76f blue:0.70f alpha:1.00f];
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    JPDetailViewController *destinationVC = segue.destinationViewController;
     
     UITableViewCell *cell = sender;
     
@@ -163,6 +169,7 @@
         person = [self.dataSource objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     }
     
+    JPDetailViewController *destinationVC = segue.destinationViewController;
     destinationVC.companyPerson = person;
 }
 

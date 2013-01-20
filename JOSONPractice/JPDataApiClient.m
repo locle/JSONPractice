@@ -13,7 +13,7 @@
 +(id)sharedInstance
 {
 //    NSString *baseURL = @"http://dl.dropbox.com";
-    NSString *baseURL = @"https://api.mongolab.com/api/";
+    NSString *baseURL = kJPAppBaseUrl;
 
     static JPDataApiClient *__sharedInstance;
     static dispatch_once_t once_token;
